@@ -1,0 +1,3 @@
+git init | Команда для создания скрытого файла .git
+git remote add origin https://github.com/kanyebek/oop_kk.git | Команда привязывания проекта к репозиторию
+
