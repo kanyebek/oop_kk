@@ -54,3 +54,7 @@ example = MyClass()
 
 example.old_method()
 example.new_method()
+
+@staticmethod
+def static_method():
+    pass
