@@ -7,13 +7,44 @@ connect = sqlite3.connect('User.db')
 cursor = connect.cursor()
 
 cursor.execute('''
-    CREATE TABLE users(
-        name VARCHAR(25) NOT NULL
-        age INT NOT NULL
+    CREATE TABLE IF NOT EXISTS users(
+        name VARCHAR(25) NOT NULL,
+        age INT NOT NULL,
         hobby  TEXT
     )                  
                '''
                )
+
+connect.commit()
+
+def add_user(name, age, hobby):
+
+    cursor.execute(
+        'INSERT INTO users(name, age, hobby) VALUES(?,?,?)',
+        (name, age, hobby)
+
+    )
+
+    connect.commit()
+    print("Пользователь {name} добавлен")
+
+
+def get_all_users():
+
+    cursor.execute('SELECT * FROM users')
+    users = cursor.fetchall()
+    print(users)
+    print('Список всех пользователей')
+
+    for i in users:
+        print(f"NAME: {i[0]}, AGE: {i[1]}, HOBBY: {i[2]}")
+
+add_user('John', 20, 'basketball')
+add_user('Max', 19, 'basketball')
+add_user('Beks', 25, 'basketball')
+get_all_users()
+
+
 
 
 # Множественное наследование
@@ -75,6 +106,6 @@ class Duck(Swimmable, Flyable):
         return 'Летает и плавает'
 
 
-donald_duck = Duck('donald duck')
-print(donald_duck.action())
-print(Duck.mro())
+# donald_duck = Duck('donald duck')
+# print(donald_duck.action())
+# print(Duck.mro())
