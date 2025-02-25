@@ -93,3 +93,4 @@ def update_grade(grade_id, new_grade):
     print(f"Subject id {grade_id} updated with grade {new_grade}!")
 update_grade(2, 4)
 update_grade(5, 3)
+update_grade(1,2)
